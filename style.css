@@ -1,0 +1,305 @@
+:root {
+    --bg-color-1: #ffd1ff;
+    --bg-color-2: #e0c3fc;
+    --container-bg: #ffffff;
+    --text-color: #5d4037; /* Warm dark brown for a softer look */
+    --text-muted: #bcaaa4;
+    --primary-color: #ff80ab; /* Bright pastel pink */
+    --primary-hover: #ff4081;
+    --secondary-color: #81d4fa; /* Pastel blue */
+    --star-color: #ffd54f; /* Gold for stars */
+    --danger-color: #ff8a80;
+    --border-radius: 24px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+    background: linear-gradient(135deg, var(--bg-color-1) 0%, var(--bg-color-2) 100%);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Background stars effect */
+.background-stars {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    background-image: 
+        radial-gradient(circle at 15% 50%, rgba(255, 255, 255, 0.8) 2px, transparent 3px),
+        radial-gradient(circle at 85% 30%, rgba(255, 255, 255, 0.8) 3px, transparent 4px),
+        radial-gradient(circle at 50% 80%, rgba(255, 255, 255, 0.6) 2px, transparent 3px),
+        radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.9) 2px, transparent 3px),
+        radial-gradient(circle at 70% 70%, rgba(255, 255, 255, 0.7) 2px, transparent 3px);
+}
+
+.todo-container {
+    background-color: var(--container-bg);
+    width: 100%;
+    max-width: 420px;
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 0 20px rgba(255, 209, 255, 0.5);
+    position: relative;
+    z-index: 1;
+    border: 4px solid var(--primary-color);
+}
+
+/* Cat Ears */
+.cat-ear {
+    position: absolute;
+    top: -25px;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 35px solid var(--primary-color);
+    z-index: -1;
+}
+
+.cat-ear::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: -10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 20px solid #ffb2cc; /* Inner ear pink */
+}
+
+.ear-left {
+    left: 40px;
+    transform: rotate(-15deg);
+}
+
+.ear-right {
+    right: 40px;
+    transform: rotate(15deg);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+h1 {
+    color: var(--primary-color);
+    font-size: 2rem;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 1px 1px 0px #ffb2cc;
+}
+
+h1 i {
+    animation: wave 2s infinite ease-in-out;
+    transform-origin: bottom center;
+}
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    50% { transform: rotate(10deg); }
+}
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+#taskInput {
+    flex: 1;
+    padding: 12px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 20px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-color);
+    outline: none;
+    transition: all var(--transition-speed);
+}
+
+#taskInput:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px rgba(255, 128, 171, 0.4);
+}
+
+#taskInput::placeholder {
+    color: #ccc;
+}
+
+#addButton {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-speed);
+    box-shadow: 0 4px 10px rgba(255, 128, 171, 0.4);
+}
+
+#addButton:hover {
+    background-color: var(--primary-hover);
+    transform: scale(1.1) rotate(10deg);
+}
+
+#addButton:active {
+    transform: scale(0.95);
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    background-color: #fafafa;
+    padding: 12px 15px;
+    border-radius: 16px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: all var(--transition-speed);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-left: 4px solid transparent;
+}
+
+.task-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+.task-item.completed {
+    opacity: 0.7;
+    background-color: #f5f5f5;
+}
+
+.task-item.important {
+    border-left-color: var(--star-color);
+    background-color: #fffde7;
+}
+
+@keyframes popIn {
+    0% { opacity: 0; transform: scale(0.8); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes popOut {
+    0% { opacity: 1; transform: scale(1); }
+    100% { opacity: 0; transform: scale(0.8); }
+}
+
+/* Checkbox (Paw) styling */
+.task-checkbox-label {
+    cursor: pointer;
+    margin-right: 12px;
+    color: #e0e0e0;
+    font-size: 1.2rem;
+    transition: color 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.task-item.completed .task-checkbox-label {
+    color: var(--primary-color);
+}
+
+.task-text {
+    flex: 1;
+    font-size: 1rem;
+    word-break: break-all;
+    transition: color 0.2s;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #e0e0e0;
+    transition: all 0.2s;
+    padding: 5px;
+}
+
+.btn-icon.btn-star:hover {
+    color: var(--star-color);
+    transform: scale(1.2);
+}
+
+.btn-icon.btn-star.active {
+    color: var(--star-color);
+}
+
+.btn-icon.btn-delete:hover {
+    color: var(--danger-color);
+    transform: scale(1.2) rotate(10deg);
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 20px 0;
+    display: none;
+    font-weight: bold;
+}
+
+/* Scrollbar for the list if it gets too long */
+.task-list {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.task-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.task-list::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: var(--primary-color); 
+    border-radius: 10px;
+}
+
+.task-list::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-hover); 
+}
