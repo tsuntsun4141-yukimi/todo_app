@@ -369,3 +369,97 @@ h1 i {
 .task-list::-webkit-scrollbar-thumb:hover {
     background: var(--primary-hover); 
 }
+
+/* =========================================
+   Responsive Design (Mobile)
+   ========================================= */
+@media screen and (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+    
+    .todo-container {
+        padding: 25px 15px 25px 35px;
+        border-radius: 5px 20px 20px 5px;
+        border-left-width: 8px;
+        max-width: 100%;
+    }
+    
+    .planner-rings {
+        left: -10px;
+        top: 40px;
+        bottom: 40px;
+    }
+    
+    .ring {
+        width: 20px;
+        height: 10px;
+    }
+    
+    .ring::after {
+        width: 5px;
+        height: 7px;
+        right: 3px;
+    }
+    
+    .cat-ear {
+        top: -20px;
+        border-left-width: 15px;
+        border-right-width: 15px;
+        border-bottom-width: 25px;
+    }
+    
+    .cat-ear::after {
+        top: 8px;
+        left: -8px;
+        border-left-width: 8px;
+        border-right-width: 8px;
+        border-bottom-width: 15px;
+    }
+    
+    .ear-left {
+        left: 25px;
+    }
+    
+    .ear-right {
+        right: 25px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .input-section {
+        margin-bottom: 20px;
+    }
+    
+    #taskInput {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+    }
+    
+    #addButton {
+        width: 45px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+    
+    .task-item {
+        padding: 10px 12px;
+        margin-bottom: 10px;
+    }
+    
+    .task-checkbox-label {
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+    
+    .task-text {
+        font-size: 0.95rem;
+    }
+    
+    .btn-icon {
+        font-size: 1rem;
+        padding: 4px;
+    }
+}
