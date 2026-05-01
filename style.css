@@ -434,14 +434,16 @@ h1 i {
     }
     
     #taskInput {
-        padding: 10px 15px;
+        padding: 12px 10px;
         font-size: 0.95rem;
+        flex: 1;
     }
     
     #addButton {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
+        width: 55px;
+        height: 55px;
+        font-size: 1.4rem;
+        flex-shrink: 0;
     }
     
     .task-item {
