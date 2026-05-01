@@ -51,14 +51,55 @@ body {
 
 .todo-container {
     background-color: var(--container-bg);
+    /* Notebook paper background */
+    background-image: linear-gradient(#f9f9f9 1px, transparent 1px);
+    background-size: 100% 36px;
+    background-position: 0 45px;
+    
     width: 100%;
-    max-width: 420px;
-    border-radius: var(--border-radius);
-    padding: 30px 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1), 0 0 20px rgba(255, 209, 255, 0.5);
+    max-width: 450px;
+    border-radius: 5px 24px 24px 5px; /* Notebook shape */
+    padding: 30px 20px 30px 50px; /* Room for rings on the left */
+    box-shadow: 10px 10px 30px rgba(0,0,0,0.1), 0 0 20px rgba(255, 209, 255, 0.5);
     position: relative;
     z-index: 1;
-    border: 4px solid var(--primary-color);
+    border: 2px solid #f8bbd0;
+    border-left: 12px solid var(--primary-color); /* Spine binding */
+}
+
+/* Planner Rings */
+.planner-rings {
+    position: absolute;
+    left: -15px;
+    top: 60px;
+    bottom: 60px;
+    width: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    z-index: 2;
+}
+
+.ring {
+    width: 30px;
+    height: 14px;
+    background: linear-gradient(to bottom, #eeeeee 0%, #ffffff 40%, #bbbbbb 100%);
+    border-radius: 10px;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.2), inset 0 1px 2px rgba(255,255,255,0.9);
+    position: relative;
+}
+
+.ring::after {
+    content: '';
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 7px;
+    height: 9px;
+    background: #e0e0e0; /* hole */
+    border-radius: 50%;
+    box-shadow: inset 1px 1px 3px rgba(0,0,0,0.4);
 }
 
 /* Cat Ears */
@@ -170,6 +211,31 @@ h1 i {
 }
 
 #addButton:active {
+    transform: scale(0.95);
+}
+
+#addStickyButton {
+    background-color: #ffd54f; /* Yellow for sticky */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--transition-speed);
+    box-shadow: 0 4px 10px rgba(255, 213, 79, 0.4);
+}
+
+#addStickyButton:hover {
+    background-color: #ffca28;
+    transform: scale(1.1) rotate(-10deg);
+}
+
+#addStickyButton:active {
     transform: scale(0.95);
 }
 
